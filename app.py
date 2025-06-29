@@ -31,3 +31,7 @@ def gemini():
         return jsonify({"response": content})
     except:
         return jsonify({"error": "Invalid response from Gemini"}), 500
+
+# ✅ This line tells Render to listen on port 10000 publicly
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
