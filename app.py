@@ -1,9 +1,17 @@
 from flask import Flask, request, jsonify
 import requests
 import os
+import random
 
 app = Flask(__name__)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+# List of friendly endings
+CLOSING_ENDINGS = [
+    "... Let me know if you'd like to hear more.",
+    "... Would you like me to continue?",
+    "... Just say the word if you want more!"
+]
 
 @app.route("/gemini", methods=["POST"])
 def gemini():
@@ -28,6 +36,12 @@ def gemini():
 
     try:
         content = response.json()["choices"][0]["message"]["content"]
+
+        # Trim and append a random closing if content is too long
+        if len(content) > 200:
+            ending = random.choice(CLOSING_ENDINGS)
+            content = content[:190].rsplit(" ", 1)[0] + " " + ending
+
         return jsonify({"response": content})
     except:
         return jsonify({"error": "Invalid response from Gemini"}), 500
