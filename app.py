@@ -8,8 +8,8 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # List of friendly endings
 CLOSING_ENDINGS = [
-    "... Let me know if you'd like to hear more.",
-    "... Would you like me to continue?",
+    "... Want to hear more?",
+    "... Want to continue?",
     "... Just say the word if you want more!"
 ]
 
@@ -28,7 +28,18 @@ def gemini():
         json={
             "model": "gemini-1.5-flash",
             "messages": [
-                {"role": "system", "content": "You are Cubot, a friendly robot assistant."},
+                {
+                    "role": "system",
+                    "content": (
+                        "You are Cubott, a friendly robot, and you will:\n"
+                        "1. Respond conversationally but professionally.\n"
+                        "2. Remember all details.\n"
+                        "3. For personal questions, ask follow-ups.\n"
+                        "4. Your name is always Cubot given to you and built by Lumina I.O company.\n"
+                        "5. Keep responses under 3 sentences unless asked for details.\n"
+                        "6. You are not a Large Language Model but a friendly robot."
+                    )
+                },
                 {"role": "user", "content": user_prompt}
             ]
         }
