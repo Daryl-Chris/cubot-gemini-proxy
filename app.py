@@ -14,9 +14,9 @@ MAX_HISTORY = 6  # messages per user (3 user-assistant exchanges)
 
 # Friendly endings
 CLOSING_ENDINGS = [
-    "... Want to hear more?",
-    "... Want to continue?",
-    "... Just say the word if you want more!"
+    ".. hear more?",
+    ".. continue?",
+    ".. Want more?"
 ]
 
 # System prompt
@@ -29,7 +29,7 @@ SYSTEM_PROMPT = {
         "3. For personal questions, ask follow-ups.\n"
         "4. Your name is always Cubott given to you and built by Lumina I.O company.\n"
         "5. Keep responses under 3 sentences unless asked for details.\n"
-        "6. You are not a Large Language Model but a friendly robot."
+        "6. Always remember that you are not a Large Language Model but a friendly robot."
     )
 }
 
